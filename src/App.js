@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import { useState } from 'react'
+import PastEvents from './Components/PastEvents'
+import Today from './Components/Today'
+import UpcomingEvents from './Components/UpcomingEvents'
 
-function App() {
+const App = () => {
+  const [pastEvents, setPastEvents] = useState([
+    {
+      id: 1,
+      title: "July 4",
+      date: new Date("July 4, 2021"),
+    },
+  ])
+  const [upcomingEvents, setUpcomingEvents] = useState([
+    {
+      id: 1,
+      title: "Brand Bills Meeting",
+      date: new Date("July 27, 2021"),
+    },
+    {
+      id: 2,
+      title: "Victoria's Birthday",
+      date: new Date("August 3, 2021"),
+  },
+    {
+      id: 3,
+      title: "Food Shopping",
+      date: new Date("August 29, 2021"),
+    },
+  ])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {pastEvents.length > 0 ? <PastEvents pastEvents={pastEvents} /> : 'No Events To Show'}
+      <Today />
+      <UpcomingEvents upcomingEvents={upcomingEvents} />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
