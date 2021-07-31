@@ -12,6 +12,7 @@ const Today = () => {
                     <span className="today-label">Today is</span>
                     <span className="today-date">{format(new Date(), 'MMMM dd')}</span>
                 </div>
+                <span className="arrow"></span>
             </div>
         </section>
     )

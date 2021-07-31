@@ -1,11 +1,17 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   max-width: 600px;
+  height: 100vh;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0 20px;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -14,7 +20,7 @@
   position: absolute;
   content: '';
   width: 3px;
-  height: 80%;
+  height: 100%;
   border-right: 3px dashed #d3d3d3;
   z-index: -1;
 }
@@ -37,9 +43,10 @@
   flex-direction: column;
   align-items: center;
   background-color: #fff;
+  padding: 5px;
 }
 
-.today::before {
+/* .today::before {
   display: inline-block;
   position: relative;
   content: '';
@@ -61,6 +68,37 @@
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
   border-left: 10px solid #000000;
+} */
+
+.arrow {
+  position: relative;
+  top: -20px;
+  width: 90%;
+  height: 0.2rem;
+  border-radius: 1rem;
+  background: #a5a5a5;
+  z-index: -1;
+}
+
+.arrow::before,
+.arrow::after {
+  content: '';
+  position: absolute;
+  z-index: -2;
+  right: -4px;
+  width: 0.876rem;
+  height: inherit;
+  background: inherit;
+}
+
+.arrow::before {
+  top: -4px;
+  transform: rotate(45deg);
+}
+
+.arrow::after {
+  top: 5px;
+  transform: rotate(-45deg);
 }
 
 .event-contrainer {
@@ -68,14 +106,57 @@
   display: flex;
   flex-direction: column;
   margin: 10px 0;
-  padding: 10px;
-  background-color: crimson;
+  padding: 15px;
+  background-color: lightgray;
   border-radius: 15px;
+  color: #fff;
+}
+
+.event-contrainer:nth-child(1) {
+  margin-top: 20px;
 }
 
 .event-title {
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 600;
   color: #fff;
-  margin: 0;
+  margin: 0 0 10px 0;
+}
+
+.event-icon {
+  display: inline-block;
+  font-size: 1.9rem;
+  margin: 0 10px 0 0;
+}
+
+.event-body {
+  display: flex;
+}
+
+.event-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.event-timing {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  font-weight: 300;
+}
+
+.event-date {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.holiday {
+  background-color: #66a1ff;
+}
+
+.meeting {
+  background-color: #ff4a6e;
+}
+
+.task {
+  background-color: #53bd53;
 }
