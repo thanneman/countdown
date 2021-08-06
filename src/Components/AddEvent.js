@@ -11,7 +11,6 @@ const AddEvent = ({ onAdd, toggleModal }) => {
     const onSubmit = (e) => {
         e.preventDefault()
 
-        //const formatedDate = format(new Date(date), 'yyyy-MM-dd')
         const localDate = date.toString()
 
         if(!title) {

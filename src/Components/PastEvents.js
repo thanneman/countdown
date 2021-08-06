@@ -6,7 +6,7 @@ const PastEvents = ({ pastEvents }) => {
 
     return (
         <>
-            {sortedEvents.slice().sort((a, b) => a.date - b.date).map((event) => (
+            {sortedEvents.map((event) => (
                 <div className={`event-contrainer ${event.color}`} key={event.id}>
                     <div className="event-header">
                         <h2 className="event-title">{event.title}</h2>

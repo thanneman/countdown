@@ -1,10 +1,6 @@
 import { format } from 'date-fns'
 
 const Today = () => {
-    // const today = new Date();
-    // const todayDate = today.getDate();
-    // const todayMonth = today.toLocaleString('default', { month: 'long' });
-
     return (
         <section className="today-container">
             <div className="today">
