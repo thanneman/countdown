@@ -8,10 +8,10 @@ import UpcomingEvents from './Components/UpcomingEvents'
 import AddEvent from './Components/AddEvent'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlusCircle, faCheckCircle, faClock, faTimes, faPlane, faBriefcase, faThumbtack, faGlassCheers } from '@fortawesome/free-solid-svg-icons'
+import { faPlusCircle, faCheckCircle, faClock, faTimes, faPlane, faUserFriends, faCalendarAlt, faGlassCheers, faBiking, faMusic } from '@fortawesome/free-solid-svg-icons'
 
 const App = () => {
-  library.add(faPlusCircle, faCheckCircle, faClock, faTimes, faPlane, faBriefcase, faThumbtack, faGlassCheers )
+  library.add(faPlusCircle, faCheckCircle, faClock, faTimes, faPlane, faUserFriends, faCalendarAlt, faGlassCheers, faBiking, faMusic )
 
   const [showAddEvent, setShowAddEvent] = useState (false)
 
@@ -76,9 +76,9 @@ const App = () => {
 
   return (
     <div className="App">
-      {pastEvents.length > 0 ? <PastEvents pastEvents={pastEvents} /> : 'No Events To Show'}
+      {pastEvents.length > 0 ? <PastEvents pastEvents={pastEvents} /> : 'No Past Events'}
       <Today />
-      {upcomingEvents.length > 0 ? <UpcomingEvents upcomingEvents={upcomingEvents} /> : 'No Events To Show'}
+      {upcomingEvents.length > 0 ? <UpcomingEvents upcomingEvents={upcomingEvents} /> : 'No Upcoming Events'}
       {showAddEvent && <AddEvent onAdd={addEvent} toggleModal={toggleModal} />}
       <button className='add-btn' onClick={toggleModal}><FontAwesomeIcon icon="plus-circle" /></button>
     </div>
