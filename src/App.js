@@ -76,9 +76,9 @@ const App = () => {
 
   return (
     <div className="App">
-      {pastEvents.length > 0 ? <PastEvents pastEvents={pastEvents} /> : 'No Past Events'}
+      {pastEvents.length > 0 ? <PastEvents pastEvents={pastEvents} /> : ''}
       <Today />
-      {upcomingEvents.length > 0 ? <UpcomingEvents upcomingEvents={upcomingEvents} /> : 'No Upcoming Events'}
+      {upcomingEvents.length > 0 ? <UpcomingEvents upcomingEvents={upcomingEvents} /> : ''}
       {showAddEvent && <AddEvent onAdd={addEvent} toggleModal={toggleModal} />}
       <button className='add-btn' onClick={toggleModal}><FontAwesomeIcon icon="plus" /></button>
     </div>

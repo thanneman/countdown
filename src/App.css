@@ -4,9 +4,10 @@
 
 body {
   margin: 0;
-  padding: 0;
   box-sizing: border-box;
   background-color: #f9f9f9;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+    env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
 .App {
@@ -17,9 +18,9 @@ body {
   position: relative;
   max-width: 600px;
   min-height: 100vh;
-  margin: 0 auto;
-  padding: 0 20px;
   font-family: 'Roboto', sans-serif;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 .App::after {
@@ -116,8 +117,8 @@ body {
   position: relative;
   padding: 5px;
   font-size: 1.2rem;
-  top: -1.5rem;
-  right: -2.7rem;
+  top: -1.3rem;
+  right: -1.3rem;
   border: 6px solid #f9f9f9;
   border-radius: 50%;
 }
@@ -171,6 +172,7 @@ body {
 .add-btn {
   position: absolute;
   font-size: 2rem;
+  color: #000000;
   background-color: #ffffff;
   padding: 0.5rem 0.8rem;
   bottom: 5%;
