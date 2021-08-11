@@ -8,10 +8,10 @@ import UpcomingEvents from './Components/UpcomingEvents'
 import AddEvent from './Components/AddEvent'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus, faCheckCircle, faClock, faTimes, faPlane, faUserFriends, faCalendarAlt, faGlassCheers, faBiking, faMusic } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faCheckCircle, faClock, faTimes, faPlane, faUserFriends, faCalendarAlt, faGlassCheers, faBiking, faMusic, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
 const App = () => {
-  library.add(faPlus, faCheckCircle, faClock, faTimes, faPlane, faUserFriends, faCalendarAlt, faGlassCheers, faBiking, faMusic )
+  library.add(faPlus, faCheckCircle, faClock, faTimes, faPlane, faUserFriends, faCalendarAlt, faGlassCheers, faBiking, faMusic, faTrashAlt )
 
   const [showAddEvent, setShowAddEvent] = useState (false)
 
@@ -64,6 +64,11 @@ const App = () => {
     setShowAddEvent(!showAddEvent)
   }
 
+  //delete task
+  const deleteTask = (id) => {
+    setAllEvents(allEvents.filter((event) => event.id !== id))
+  }
+
   //toggle modal
   const toggleModal = () => {
     setShowAddEvent(!showAddEvent)
@@ -76,9 +81,9 @@ const App = () => {
 
   return (
     <div className="App">
-      {pastEvents.length > 0 ? <PastEvents pastEvents={pastEvents} /> : ''}
+      {pastEvents.length > 0 ? <PastEvents pastEvents={pastEvents} onDelete={deleteTask} /> : ''}
       <Today />
-      {upcomingEvents.length > 0 ? <UpcomingEvents upcomingEvents={upcomingEvents} /> : ''}
+      {upcomingEvents.length > 0 ? <UpcomingEvents upcomingEvents={upcomingEvents} onDelete={deleteTask} /> : ''}
       {showAddEvent && <AddEvent onAdd={addEvent} toggleModal={toggleModal} />}
       <button className='add-btn' onClick={toggleModal}><FontAwesomeIcon icon="plus" /></button>
     </div>

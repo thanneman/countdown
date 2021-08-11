@@ -1,7 +1,7 @@
 import { formatDistanceToNow, parseISO } from 'date-fns'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const PastEvents = ({ pastEvents }) => {
+const PastEvents = ({ pastEvents, onDelete }) => {
     const sortedEvents = pastEvents.slice().sort((a, b) => a.date > b.date ? 1: -1);
 
     return (
@@ -18,6 +18,7 @@ const PastEvents = ({ pastEvents }) => {
                             <span className="event-timing">Happened</span>
                             <span className="event-date">{formatDistanceToNow(parseISO(event.date), {addSuffix: true})}</span>
                         </div>
+                        <button className='btn-delete' onClick={() => onDelete(event.id)}><FontAwesomeIcon icon="trash-alt" fixedWidth/></button>
                     </div>
                 </div>
             ))}
