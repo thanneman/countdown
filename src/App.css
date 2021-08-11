@@ -9,6 +9,10 @@ body {
   background-color: #f9f9f9;
 }
 
+.root {
+  height: 100vh;
+}
+
 .App {
   display: flex;
   flex-direction: column;
@@ -16,10 +20,10 @@ body {
   align-items: center;
   position: relative;
   max-width: 600px;
-  min-height: 100vh;
+  min-height: 100%;
   font-family: 'Roboto', sans-serif;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0 20px;
 }
 
 .App::after {
@@ -254,11 +258,10 @@ body {
   align-items: center;
   position: absolute;
   right: 20px;
-  width: 30px;
-  height: 30px;
   font-size: 1rem;
   color: #888888;
   background-color: #ebebeb;
+  padding: 6px 5px;
   border: 1px solid #888888;
   border-radius: 50%;
   cursor: pointer;
