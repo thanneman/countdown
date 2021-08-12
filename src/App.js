@@ -11,50 +11,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faCheckCircle, faClock, faTimes, faPlane, faUserFriends, faCalendarAlt, faGlassCheers, faBiking, faMusic, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
 const App = () => {
+  //set global icon library
   library.add(faPlus, faCheckCircle, faClock, faTimes, faPlane, faUserFriends, faCalendarAlt, faGlassCheers, faBiking, faMusic, faTrashAlt )
 
-  const [showAddEvent, setShowAddEvent] = useState (false)
-
-  const [allEvents, setAllEvents] = useLocalStorage("allEvents", [
-    // {
-    //   id: 1,
-    //   title: "July 4",
-    //   date: "2021-07-04",
-    //   type: "glass-cheers",
-    //   color: "green",
-    // },
-    // {
-    //   id: 2,
-    //   title: "Meeting",
-    //   date: "2021-07-27",
-    //   type: "briefcase",
-    //   color: "red",
-    // },
-    // {
-    //   id: 3,
-    //   title: "Susan's Birthday",
-    //   date: "2021-08-10",
-    //   type: "glass-cheers",
-    //   color: "blue",
-    // },
-    // {
-    //   id: 5,
-    //   title: "Vegas",
-    //   date: "2022-07-25",
-    //   type: "plane",
-    //   color: "blue",
-    // },
-    // {
-    //   id: 4,
-    //   title: "Food Shopping",
-    //   date: "2021-08-29",
-    //   type: "thumbtack",
-    //   color: "grey",
-    // },
-  ])
-
+  //state for events and modal
+  const [allEvents, setAllEvents] = useLocalStorage("allEvents", [])
   const [pastEvents, setPastEvents] = useState([])
   const [upcomingEvents, setUpcomingEvents] = useState([])
+  const [showAddEvent, setShowAddEvent] = useState (false)
 
   //add event
   const addEvent = (event) => {
@@ -74,6 +38,7 @@ const App = () => {
     setShowAddEvent(!showAddEvent)
   }
 
+  //split all events into past and upcoming based on todays date
   useEffect(() => {
     setPastEvents(allEvents.filter(event => isBefore(parseISO(event.date), new Date())));
     setUpcomingEvents(allEvents.filter(event => isAfter(parseISO(event.date), new Date())));
@@ -81,11 +46,11 @@ const App = () => {
 
   return (
     <div className="App">
-      {pastEvents.length > 0 ? <PastEvents pastEvents={pastEvents} onDelete={deleteTask} /> : ''}
+      {pastEvents.length > 0 ? <PastEvents pastEvents={pastEvents} onDelete={deleteTask} /> : '' }
       <Today />
       {upcomingEvents.length > 0 ? <UpcomingEvents upcomingEvents={upcomingEvents} onDelete={deleteTask} /> : ''}
       {showAddEvent && <AddEvent onAdd={addEvent} toggleModal={toggleModal} />}
-      <button className='add-btn' onClick={toggleModal}><FontAwesomeIcon icon="plus" /></button>
+      <button className='add-btn' aria-label="Add Event" onClick={toggleModal}><FontAwesomeIcon icon="plus" /></button>
     </div>
   )
 }

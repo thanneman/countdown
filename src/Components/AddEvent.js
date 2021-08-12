@@ -2,17 +2,19 @@ import { useState, useEffect, useRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const AddEvent = ({ onAdd, toggleModal }) => {
+    //state for event
     const [title, setTitle] = useState('')
     const [date, setDate] = useState('')
     const [type, setType] = useState('')
     const [color, setColor] = useState('')
     const inputRef = useRef()
 
+    //submit new event
     const onSubmit = (e) => {
         e.preventDefault()
-
         const localDate = date.toString()
 
+        //validate form values
         if(!title) {
             alert('Please add event title')
             return
@@ -22,7 +24,7 @@ const AddEvent = ({ onAdd, toggleModal }) => {
             return
         }
         if (!type) {
-            alert('Please add an event type')
+            alert('Please add a category')
             return
         }
         if (!color) {
@@ -30,19 +32,23 @@ const AddEvent = ({ onAdd, toggleModal }) => {
             return
         }
 
+        //use form values to create new event
         onAdd({ title, date: localDate, type, color })
 
+        //clear form on submit
         setTitle('')
         setDate('')
         setType('')
         setColor('')
     }
 
+    //toggle modal
     const onClick = (e) => {
         e.preventDefault()
         toggleModal()
     }
 
+    //update focus to form on modal open
     useEffect(() => {
         inputRef.current.focus()
     }, [])
