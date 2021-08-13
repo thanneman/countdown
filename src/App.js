@@ -12,17 +12,17 @@ import { faPlus, faCheckCircle, faClock, faTimes, faPlane, faUserFriends, faCale
 
 const App = () => {
   //set global icon library
-  library.add(faPlus, faCheckCircle, faClock, faTimes, faPlane, faUserFriends, faCalendarAlt, faGlassCheers, faBiking, faMusic, faTrashAlt )
+  library.add(faPlus, faCheckCircle, faClock, faTimes, faPlane, faUserFriends, faCalendarAlt, faGlassCheers, faBiking, faMusic, faTrashAlt)
 
   //state for events and modal
   const [allEvents, setAllEvents] = useLocalStorage("allEvents", [])
   const [pastEvents, setPastEvents] = useState([])
   const [upcomingEvents, setUpcomingEvents] = useState([])
-  const [showAddEvent, setShowAddEvent] = useState (false)
+  const [showAddEvent, setShowAddEvent] = useState(false)
 
   //add event
   const addEvent = (event) => {
-    const id = Math.floor(Math.random() * 10000) +1
+    const id = Math.floor(Math.random() * 10000) + 1
     const newEvent = { id, ...event }
     setAllEvents([...allEvents, newEvent])
     setShowAddEvent(!showAddEvent)
@@ -46,8 +46,9 @@ const App = () => {
 
   return (
     <div className="App">
-      {pastEvents.length > 0 ? <PastEvents pastEvents={pastEvents} onDelete={deleteTask} /> : '' }
+      {pastEvents.length > 0 ? <PastEvents pastEvents={pastEvents} onDelete={deleteTask} /> : ''}
       <Today />
+      {allEvents.length < 1 ? <div className="no-events">You have no events. <button href="#" onClick={toggleModal} >Add an event</button></div> : ''}
       {upcomingEvents.length > 0 ? <UpcomingEvents upcomingEvents={upcomingEvents} onDelete={deleteTask} /> : ''}
       {showAddEvent && <AddEvent onAdd={addEvent} toggleModal={toggleModal} />}
       <button className='add-btn' aria-label="Add Event" onClick={toggleModal}><FontAwesomeIcon icon="plus" /></button>
